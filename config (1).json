@@ -1,0 +1,48 @@
+{
+  "banner": {
+    "on": false,
+    "text": ""
+  },
+  "abyssInvite": "",
+  "otakuUrl": "",
+  "staff": [
+    {
+      "emoji": "😈",
+      "name": "Demonic Angel",
+      "role": "Holy Owner"
+    },
+    {
+      "emoji": "🧀",
+      "name": "Triple Cheese",
+      "role": "Mod"
+    },
+    {
+      "emoji": "📖",
+      "name": "Anos",
+      "role": "Adviser"
+    },
+    {
+      "emoji": "💖",
+      "name": "Amy",
+      "role": "Our Favorite"
+    }
+  ],
+  "reqs": [
+    {
+      "emoji": "🤝",
+      "title": "Community Size",
+      "text": "200+ active members"
+    },
+    {
+      "emoji": "✅",
+      "title": "Content Policy",
+      "text": "Zero harassment or hate speech"
+    },
+    {
+      "emoji": "🛡️",
+      "title": "Safety",
+      "text": "5+ dedicated moderators"
+    }
+  ],
+  "partners": []
+}
