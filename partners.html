@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Heaven Partners</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ffc6dc;--vio:#b49cff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;font-family:'Quicksand',sans-serif;color:#fff;background:radial-gradient(circle at 20% 10%,#2a1850,transparent 50%),radial-gradient(circle at 80% 90%,#4a1530,transparent 50%),#07070c;background-attachment:fixed;padding:16px 16px 60px}
+.w{max-width:900px;margin:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Cinzel Decorative',serif}
+.g{background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.22);box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-radius:999px;margin-bottom:30px}
+h2{text-align:center;margin:34px 0 20px;text-shadow:0 0 14px var(--vio)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.c{border-radius:28px;padding:24px;text-align:center;display:block}
+.c img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--pink);display:block;margin:0 auto 10px;box-shadow:0 0 14px var(--vio)}
+.e{font-size:2.4rem;margin-bottom:6px}
+.btn{display:inline-block;margin-top:16px;padding:12px 30px;border-radius:999px;background:linear-gradient(45deg,var(--pink),var(--vio));color:#111;font-weight:700}
+.d{max-width:560px;margin:30px auto}
+.d img{width:140px;height:140px}
+.mid{text-align:center}
+</style></head><body><div class="w">
+<div class="top g"><a href="index.html">← Heaven</a><b style="font-family:'Cinzel Decorative'">Partners</b></div>
+<div id="app"></div></div>
+<script>
+const INV='https://discord.gg/YyAcdpapPB';
+const $=s=>document.querySelector(s);
+const slug=s=>(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const okImg=p=>typeof p==='string'&&/^img\/[\w.-]+(\?v=\d+)?$/.test(p);
+const okUrl=u=>typeof u==='string'&&u.startsWith('https://');
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+function pic(o){if(okImg(o.img)){const i=el('img');i.src=o.img;i.alt='';return i}return el('div','e',o.emoji||'✨')}
+const DR=[{emoji:'🤝',title:'Community Size',text:'200+ active members'},{emoji:'✅',title:'Content Policy',text:'Zero harassment or hate speech'},{emoji:'🛡️',title:'Safety',text:'5+ dedicated moderators'}];
+let C={reqs:[],partners:[]};
+function render(){const R=$('#app');R.textContent='';const h=location.hash.slice(1),p=C.partners.find(x=>slug(x.name)===h);
+if(h&&p){document.title=p.name+' · Heaven Partners';const d=el('div','c g d');d.append(pic(p),el('h1',0,p.name),el('p',0,p.text||''));
+if(okUrl(p.link)){const a=el('a','btn','Join '+p.name);a.href=p.link;a.target='_blank';a.rel='noopener';d.append(a)}
+const b=el('a','btn','← All partners');b.href='#';b.style.marginLeft='8px';d.append(b);R.append(d);return}
+document.title='Heaven Partners';
+R.append(el('h2',0,'Partner Requirements'));const g1=el('div','grid');
+C.reqs.forEach(r=>{const c=el('div','c g');c.append(pic(r),el('h3',0,r.title),el('p',0,r.text||''));g1.append(c)});R.append(g1);
+R.append(el('h2',0,'Our Partners'));const g2=el('div','grid');
+if(C.partners.length)C.partners.forEach(x=>{const a=el('a','c g');a.href='#'+slug(x.name);a.append(pic(x),el('h3',0,x.name),el('p',0,x.text||''));g2.append(a)});
+else{const c=el('div','c g');c.append(el('div','e','✨'),el('h3',0,'Your server here'),el('p',0,'Meet the requirements and apply in Discord.'));g2.append(c)}
+R.append(g2);const m=el('div','mid');const a=el('a','btn','Apply in Discord');a.href=INV;m.append(a);R.append(m)}
+addEventListener('hashchange',render);
+fetch('config.json?'+Date.now()).then(r=>r.ok?r.json():Promise.reject()).then(c=>{C={reqs:(c.reqs&&c.reqs.length)?c.reqs:DR,partners:c.partners||[]}}).catch(()=>{C.reqs=DR}).finally(render);
+</script></body></html>
