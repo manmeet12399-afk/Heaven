@@ -1,0 +1,11 @@
+{
+  "banner": { "on": false, "text": "" },
+  "abyssInvite": "",
+  "otakuUrl": "",
+  "staff": [
+    { "emoji": "😈", "name": "Demonic Angel", "role": "Holy Owner" },
+    { "emoji": "🧀", "name": "Triple Cheese", "role": "Mod" },
+    { "emoji": "📖", "name": "Anos", "role": "Adviser" },
+    { "emoji": "💖", "name": "Amy", "role": "Our Favorite" }
+  ]
+}
